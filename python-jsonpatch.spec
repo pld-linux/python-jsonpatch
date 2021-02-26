@@ -7,7 +7,7 @@
 Summary:	Apply JSON-Patches (RFC 6902)
 Name:		python-jsonpatch
 Version:	1.16
-Release:	3
+Release:	4
 License:	BSD
 Group:		Libraries/Python
 Source0:	https://files.pythonhosted.org/packages/source/j/jsonpatch/jsonpatch-%{version}.tar.gz
