@@ -1,10 +1,11 @@
 #
 # Conditional build:
-%bcond_with	tests	# do perform "make test" (broken - tests.js file missing)
+%bcond_with	tests	# unit tests (broken - tests.js file missing)
 %bcond_without	python2 # CPython 2.x module
 %bcond_without	python3 # CPython 3.x module
 
 Summary:	Apply JSON-Patches (RFC 6902)
+Summary(pl.UTF-8):	Nakładanie łat JSON-Patch (RFC 6902)
 Name:		python-jsonpatch
 Version:	1.16
 Release:	7
@@ -34,17 +35,25 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 Library to apply JSON Patches according to RFC 6902.
 
+%description -l pl.UTF-8
+Biblioteka do nakładania łat JSON Patch zgodnie z RFC 6902.
+
 %package -n python3-jsonpatch
 Summary:	Apply JSON-Patches (RFC 6902)
+Summary(pl.UTF-8):	Nakładanie łat JSON-Patch (RFC 6902)
 Group:		Libraries/Python
 Requires:	python3-jsonpointer >= 1.9
 
 %description -n python3-jsonpatch
 Library to apply JSON Patches according to RFC 6902.
 
+%description -n python3-jsonpatch -l pl.UTF-8
+Biblioteka do nakładania łat JSON Patch zgodnie z RFC 6902.
+
 %package -n jsonpatch
 Summary:	Apply JSON-Patches (RFC 6902)
-Group:		Libraries/Python
+Summary(pl.UTF-8):	Nakładanie łat JSON-Patch (RFC 6902)
+Group:		Applications/File
 %if %{with python3}
 Requires:	python3-jsonpatch = %{version}-%{release}
 %else
@@ -52,8 +61,10 @@ Requires:	%{name} = %{version}-%{release}
 %endif
 
 %description -n jsonpatch
-Library to apply JSON Patches according to RFC 6902.
+Utilities to apply JSON Patches according to RFC 6902.
 
+%description -n jsonpatch -l pl.UTF-8
+Narzędzia do nakładania łat JSON Patch zgodnie z RFC 6902.
 
 %prep
 %setup -q -n jsonpatch-%{version}
@@ -74,12 +85,14 @@ rm -rf $RPM_BUILD_ROOT
 %py_install
 
 %py_postclean
-%endif
 
 %if %{with python3}
 # otherwise python2 scripts would be used
-rm -f $RPM_BUILD_ROOT%{_bindir}/* || :
+%{__rm} $RPM_BUILD_ROOT%{_bindir}/*
+%endif
+%endif
 
+%if %{with python3}
 %py3_install
 %endif
 
@@ -99,12 +112,11 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS README.md
 %{py3_sitescriptdir}/jsonpatch.py
-%{py3_sitescriptdir}/__pycache__/*
+%{py3_sitescriptdir}/__pycache__/jsonpatch.cpython-*.py[co]
 %{py3_sitescriptdir}/jsonpatch-%{version}-py*.egg-info
 %endif
 
 %files -n jsonpatch
 %defattr(644,root,root,755)
-%doc AUTHORS README.md
-%attr(755,root,root) %{_bindir}/jsonpatch
 %attr(755,root,root) %{_bindir}/jsondiff
+%attr(755,root,root) %{_bindir}/jsonpatch
