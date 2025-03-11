@@ -8,7 +8,7 @@ Summary:	Apply JSON-Patches (RFC 6902)
 Summary(pl.UTF-8):	Nakładanie łat JSON-Patch (RFC 6902)
 Name:		python-jsonpatch
 Version:	1.33
-Release:	2
+Release:	3
 License:	BSD
 Group:		Libraries/Python
 Source0:	https://files.pythonhosted.org/packages/source/j/jsonpatch/jsonpatch-%{version}.tar.gz
