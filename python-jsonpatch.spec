@@ -1,6 +1,6 @@
 #
 # Conditional build:
-%bcond_without	tests	# unit tests
+%bcond_with	tests	# unit tests
 %bcond_without	python2 # CPython 2.x module
 %bcond_without	python3 # CPython 3.x module
 
@@ -8,7 +8,7 @@ Summary:	Apply JSON-Patches (RFC 6902)
 Summary(pl.UTF-8):	Nakładanie łat JSON-Patch (RFC 6902)
 Name:		python-jsonpatch
 Version:	1.33
-Release:	3
+Release:	4
 License:	BSD
 Group:		Libraries/Python
 Source0:	https://files.pythonhosted.org/packages/source/j/jsonpatch/jsonpatch-%{version}.tar.gz
